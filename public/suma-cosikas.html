@@ -11,6 +11,11 @@
     <div id="resultado">No Se na de na</div>
 
     <script>
+
+        function randInt(max) {
+            return Math.floor(Math.random() * (max + 1))
+        }
+
         function hazElAjax() {
            var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -20,17 +25,21 @@
                   document.getElementById("resultado").innerHTML = this.responseText
                 }
             };
-            xhttp.open("GET", "/suma?sumando1=1&sumando2=8", true);
+
+            const url = `/suma?sumando1=${randInt(10)}&sumando2=${randInt(50)}`
+
+            xhttp.open("GET", url, true);
             xhttp.send();
         }
 
         alert("Tonto el k lo lea")
         document.getElementById("resultado").innerHTML = "Que era broma, va no t enfades"
 
-        var a = 3 + 5
+        var a = 20 + 4
         alert(a)
+        document.getElementById("resultado").innerHTML = "Quiero billar"
 
-        setTimeout(hazElAjax, 1000)
+        setTimeout(hazElAjax, 300)
     </script>
 </body>
 </html>
